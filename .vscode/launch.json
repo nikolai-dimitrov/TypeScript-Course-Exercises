@@ -5,10 +5,11 @@
 			"type": "node",
 			"request": "launch",
 			"name": "Launch Program",
-			"program": "${workspaceFolder}/${fileBasename}", // Run the currently opened file
+			// "program": "${workspaceFolder}/${fileBasename}", // Run the currently opened file
+			"program": "${fileDirname}/out/${fileBasenameNoExtension}.js", // Run the currently opened file
 			"preLaunchTask": "tsc: build - tsconfig.json", // Transpile the files
 			"outFiles": [
-				"${workspaceFolder}/out/**/*.js" // Look for the transpiled files in /out dir
+				"${fileDirname}/out/**/*.js" // Look for the transpiled files in /out dir
 			]
 		}
 	]
