@@ -1,28 +1,3 @@
-type LocationType = {
-	city: string;
-	street: string;
-	number: number;
-	postalCode: number;
-	getAddressInfo: () => string;
-};
-
-type NamesType = {
-	fName: string;
-	lName: string;
-	age: number;
-	getPersonInfo: () => string;
-};
-
-const createCombinedFunction = (
-	names: NamesType,
-	location: LocationType
-): Function => {
-	return function (combinedObject: NamesType & LocationType): void {
-        // console.log(`Hello, ${combinedObject.getPersonInfo()` from `${combinedObject.getAddressInfo()}`)
-        console.log(`Hello ${combinedObject.getPersonInfo()} from ${combinedObject.getAddressInfo()}`)
-    };
-};
-
 let names = {
 	fName: "John",
 	lName: "Doe",
@@ -41,6 +16,27 @@ let location1 = {
 		return `${this.street} ${this.number}, ${this.city} ${this.postalCode}`;
 	},
 };
+
+type LocationType = typeof location1;
+// type LocationType = {
+// 	city: string;
+// 	street: string;
+// 	number: number;
+// 	postalCode: number;
+// 	getAddressInfo: () => string;
+// };
+
+type NamesType = typeof names;
+
+const createCombinedFunction = (
+	names: NamesType,
+	location: LocationType
+): Function => {
+	return function (combinedObject: NamesType & LocationType): void {
+        console.log(`Hello ${combinedObject.getPersonInfo()} from ${combinedObject.getAddressInfo()}`)
+    };
+};
+
 
 let combinedFunction = createCombinedFunction(names, location1);
 let combinedPerson = Object.assign({}, names, location1);
