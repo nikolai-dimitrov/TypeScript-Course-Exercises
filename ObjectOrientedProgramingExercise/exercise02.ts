@@ -9,7 +9,9 @@ class BankAccount {
 	};
 
 	withdraw = (amount: number): void => {
-		this.balance -= amount;
+		if (amount <= this.balance) {
+			this.balance -= amount;
+		}
 	};
 
 	getBalance = (): number => {
@@ -24,7 +26,6 @@ account.deposit(50);
 account.withdraw(30);
 
 console.log(account.getBalance());
-
 
 // const account = new BankAccount(20);
 
