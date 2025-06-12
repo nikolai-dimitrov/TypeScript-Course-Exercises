@@ -2,7 +2,7 @@
 import { decorator1, decorator2, decorator3 } from "../../decorators";
 import { Cipher } from "../cipher";
 
-@decorator1
+// @decorator1
 export class CaesarCipher<T extends { charset: Set<string>, isCompatibleToCharset(message: string): boolean }> implements Cipher<T> {
     protected _offset: number = 2;
 
@@ -12,7 +12,7 @@ export class CaesarCipher<T extends { charset: Set<string>, isCompatibleToCharse
         return this._language;
     }
 
-    @decorator2
+    // @decorator2
     encipher(text: string): string {
         let characters = text.split('');
         let setValues = [...this._language.charset.values()];
@@ -25,7 +25,7 @@ export class CaesarCipher<T extends { charset: Set<string>, isCompatibleToCharse
         return encoded.join('');
     }
 
-    @decorator3
+    // @decorator3
     decipher(text: string): string {
         let characters = text.split('');
         let setValues = [...this._language.charset.values()];
