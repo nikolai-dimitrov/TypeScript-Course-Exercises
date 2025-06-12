@@ -1,6 +1,11 @@
+import { Cipher } from "./contracts/cipher";
 import { PartialMessageEncoder } from "./contracts/implemented/partialMessageEncoder";
+import { Language } from "./contracts/language";
 
-export class LanguageMessageEncoder<T, V> extends PartialMessageEncoder {
+export class LanguageMessageEncoder<
+	T extends Language,
+	V extends Cipher<T>
+> extends PartialMessageEncoder {
 	static encodedCharsSum: number = 0;
 	static decodedCharsSum: number = 0;
 	static bothEncodedDecodedCharsSum: number = 0;
